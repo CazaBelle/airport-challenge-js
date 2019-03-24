@@ -23,7 +23,7 @@ QuickStart
 
 1. Fork this repo, and clone to your local machine
 2. Run the command `npm install` 
-3. When the installation completes, run `bundle`
+
 
 
 User Stories

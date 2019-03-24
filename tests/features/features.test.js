@@ -15,4 +15,10 @@ beforeEach(() => {
     expect(airport.hanger).toContain(plane)
   });
 
+  it('should instruct a plane to take off from the airport', () => {
+    airport.land(plane)
+    airport.takeoff(plane)
+    expect(airport.hanger).not.toContain(plane)
+  });
+
 });
