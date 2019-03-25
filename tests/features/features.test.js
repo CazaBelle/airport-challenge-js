@@ -1,15 +1,15 @@
 const { Airport } = require('../../src/airport.js')
 const { Plane } = require('../../src/plane.js')
-const { Weather } = require('../../src/weather.js')
-
+const { WeatherReport } = require('../../src/weather.js')
 
 describe('features', () => {
 
-beforeEach(() => {
-  airport = new Airport('Luton', 5);
-  plane = new Plane();
-  weather = new Weather();
-});
+  beforeEach(() => {
+    airport = new Airport('Luton', 5);
+    plane = new Plane();
+    weather = new WeatherReport();
+   
+  });
 
   it('should be able to land a plane at an airport', () => {
     airport.land(plane)
@@ -17,9 +17,12 @@ beforeEach(() => {
   });
 
   it('should instruct a plane to take off from the airport', () => {
+    airport.isStormy = jest.fn();
+    airport.isStormy
+      .mockReturnValueOnce(false)
     airport.land(plane)
     airport.takeoff(plane)
-    expect(airport.hanger).not.toContain(plane)
+      expect(airport.hanger).not.toContain(plane)
   });
 
   it('should prevent landing when capacity full', () => {
@@ -28,6 +31,15 @@ beforeEach(() => {
    } 
     expect(function() { airport.land(plane) }).toThrow('Airport Full')
 
+  });
+
+  it('should prevent takeoff if weather is stormy', () => {
+ //need to mock stormy here
+  airport.isStormy = jest.fn();
+  airport.isStormy
+    .mockReturnValueOnce(true)
+  expect(function() { airport.takeoff(plane) }).toThrow('Weather Stormy Takeoff Prevented')
+   
   });
 
 });

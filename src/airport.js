@@ -1,11 +1,12 @@
 'use strict'
 
-const { Weather } = require('../src/weather.js')
+const { WeatherReport } = require('../src/weather.js')
 
 class Airport {
-  constructor(name, capacity){
+  constructor(name, capacity, weather = new WeatherReport()){
     this.name = name 
     this.capacity = capacity 
+    this.weather = weather
     this.hanger = []
   }
 
@@ -15,15 +16,22 @@ class Airport {
     }else{
       this.hanger.push(plane) 
     }
-   
   }
 
   takeoff(plane){
-    this.hanger.pop(plane)
+    if(this.isStormy() === true){
+      throw 'Weather Stormy Takeoff Prevented'
+    }else{
+      this.hanger.pop(plane)
+    }
   }
 
   isFull(){
-    return(this.hanger.length === this.capacity ? true : false)
+    return(this.hanger.length === this.capacity)
+  }
+
+  isStormy(){
+    return(this.weather.getForcast())
   }
 
 }
