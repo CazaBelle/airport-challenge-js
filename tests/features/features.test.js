@@ -8,12 +8,11 @@ describe('features', () => {
     airport = new Airport('Luton', 5);
     plane = new Plane();
     weather = new WeatherReport();
-   
   });
 
   it('should be able to land a plane at an airport', () => {
     airport.land(plane)
-    expect(airport.hanger).toContain(plane)
+      expect(airport.hanger).toContain(plane)
   });
 
   it('should instruct a plane to take off from the airport', () => {
@@ -29,16 +28,16 @@ describe('features', () => {
    for(var i = 1; i <= 5; i++){
     airport.land(plane)
    } 
-    expect(function() { airport.land(plane) }).toThrow('Airport Full')
+      expect(function() { airport.land(plane) }).toThrow('Airport Full')
 
   });
 
   it('should prevent takeoff if weather is stormy', () => {
  //need to mock stormy here
-  airport.isStormy = jest.fn();
-  airport.isStormy
-    .mockReturnValueOnce(true)
-  expect(function() { airport.takeoff(plane) }).toThrow('Weather Stormy Takeoff Prevented')
+    airport.isStormy = jest.fn();
+    airport.isStormy
+      .mockReturnValueOnce(true)
+      expect(function() { airport.takeoff(plane) }).toThrow('Weather Stormy Takeoff Prevented')
    
   });
 

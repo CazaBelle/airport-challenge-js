@@ -19,7 +19,7 @@ class Airport {
   }
 
   takeoff(plane){
-    if(this.isStormy() === true){
+    if(this.isStormy()){
       throw 'Weather Stormy Takeoff Prevented'
     }else{
       this.hanger.pop(plane)
