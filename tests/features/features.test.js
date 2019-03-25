@@ -33,12 +33,19 @@ describe('features', () => {
   });
 
   it('should prevent takeoff if weather is stormy', () => {
- //need to mock stormy here
+    //need to mock stormy here
     airport.isStormy = jest.fn();
     airport.isStormy
       .mockReturnValueOnce(true)
       expect(function() { airport.takeoff(plane) }).toThrow('Weather Stormy Takeoff Prevented')
-   
+  });
+
+  it('should prevent landing when the weather is stormy', () => {
+    airport.isStormy = jest.fn();
+    airport.isStormy
+      .mockReturnValueOnce(false)
+      expect(function() { airport.takeoff(plane) }).not.toThrow('Weather Stormy Takeoff Prevented')
+      expect(airport.hanger).not.toContain(plane)
   });
 
 });

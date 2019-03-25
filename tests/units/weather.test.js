@@ -18,5 +18,4 @@ describe('WeatherReport', () => {
       .mockReturnValueOnce(1)
       expect(report.getForcast).toBeFalsy
   });
-  
 });

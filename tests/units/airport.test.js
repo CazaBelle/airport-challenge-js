@@ -3,9 +3,11 @@ const { Airport } = require('../../src/airport')
 
 describe('Airport', () => {
   let airport 
+  let plane
 
   beforeEach(() => {
-    airport = new Airport()
+    airport = new Airport('Luton', 2)
+    plane = {}
   });
 
   
@@ -20,6 +22,12 @@ describe('Airport', () => {
     expect(airport.takeoff()).not.tobeUndefined
   });
 
-  
+  it('should raise an error when full ', () => {
+    for(var i = 0; i <= 1; i++){
+      airport.land(plane)
+     } 
+     expect(function() { airport.land(plane) }).toThrow('Airport Full')
+  });
+
 
 });
