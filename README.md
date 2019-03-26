@@ -17,20 +17,23 @@ Prerequistics
 1. node
 2. npm 
 
-
 QuickStart
 -------
-
 1. Fork this repo, and clone to your local machine
-2. Run the command `npm install` 
+2. 
+3. Run the command `npm install` 
 
+Testing
+-------
+1. `$ npm test` #run tests with jest
 
-
+Usage
+-------
+1. `$ node` in terminal
+2. `$ .load src/airport.js`
+3. 
 User Stories
 -----
-
-We have a request from a client to write the software to control the flow of planes at an airport. The planes can land and take off provided that the weather is sunny. Occasionally it may be stormy, in which case no planes can land or take off.  Here are the user stories that we worked out in collaboration with the client:
-
 ```
 As an air traffic controller 
 So I can get passengers to a destination 

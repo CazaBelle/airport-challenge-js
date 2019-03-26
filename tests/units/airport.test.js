@@ -16,10 +16,13 @@ describe('Airport', () => {
   });
  
   it('should allow a plane to takeoff', () => {
+    //mock that it is clear
     airport.isStormy = jest.fn();
     airport.isStormy
       .mockReturnValueOnce(false)
+      airport.land(plane)
     expect(airport.takeoff()).not.tobeUndefined
+    expect(airport.hanger.length).toBe(0)
   });
 
   it('should raise an error when full ', () => {
